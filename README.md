@@ -42,16 +42,6 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
   * phone
   * timezone
 
-* Volunteer
-  * first_name
-  * last_name
-  * email
-  * hours_available
-  
-* VolunteerHours
-  * volunteer: FK
-  * start: DateTime
-  * end: DateTime
   
 * Lecture
   * date
@@ -62,29 +52,7 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
   * duration
   * level
   * required: BooleanField
-  
-* Attendance
-  * lecture_id
-  * student_id
-  
-* Project (labs)
-  * title
-  * description
-  * url
-  * level
-  * required
 
-* StudentSubmission
-  * student_id
-  * project_id
-  * url: CharField
-  * feedback: TextField (for comments from reviewers)
-  * approved: BooleanField
-  
-* StudentCertificate 
-  * student_id
-  * certificate_id
-  
 * Certificate
   * name
   * description
@@ -133,14 +101,12 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
 }
 ```
 
+
+**/users**
+* get
 * post
 
-**/users/:id/certificates**
-
-* get
-
-**/users/:id/assignments**
-
+**/lectures**
 * get
 * post
 
@@ -148,7 +114,6 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
 
 * get
 
-**/projects**
 
 * get
 
