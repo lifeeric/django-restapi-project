@@ -23,94 +23,100 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
 ```
 
 
-Schema
-User
+## Schema
 
-email
-password
-groups: student, admin, or volunteer (can only belong to one)
-StudentProfile
+* User
+  * email
+  * password
+  * groups: student, admin, or volunteer (can only belong to one)
 
-first_name
-last_name
-preferred_name
-discord_name
-github_username
-codepen_username
-fcc_profile_url
-current_level
-phone
-timezone
-Volunteer
+* StudentProfile
+  * first_name
+  * last_name
+  * preferred_name
+  * discord_name
+  * github_username
+  * codepen_username
+  * fcc_profile_url
+  * current_level
+  * phone
+  * timezone
 
-first_name
-last_name
-email
-hours_available
-VolunteerHours
+* Volunteer
+  * first_name
+  * last_name
+  * email
+  * hours_available
+  
+* VolunteerHours
+  * volunteer: FK
+  * start: DateTime
+  * end: DateTime
+  
+* Lecture
+  * date
+  * title
+  * description
+  * lecturer_name
+  * slides_url
+  * duration
+  * level
+  * required: BooleanField
+  
+* Attendance
+  * lecture_id
+  * student_id
+  
+* Project (labs)
+  * title
+  * description
+  * url
+  * level
+  * required
 
-volunteer: FK
-start: DateTime
-end: DateTime
-Lecture
+* StudentSubmission
+  * student_id
+  * project_id
+  * url: CharField
+  * feedback: TextField (for comments from reviewers)
+  * approved: BooleanField
+  
+* StudentCertificate 
+  * student_id
+  * certificate_id
+  
+* Certificate
+  * name
+  * description
 
-date
-title
-description
-lecturer_name
-slides_url
-duration
-level
-required: BooleanField
-Attendance
+* Waitlist
+  * first_name
+  * last_name
+  * email
+  * notes
 
-lecture_id
-student_id
-Project (labs)
+## API
 
-title
-description
-url
-level
-required
-StudentSubmission
+**Prefix:** /api/v1
 
-student_id
-project_id
-url: CharField
-feedback: TextField (for comments from reviewers)
-approved: BooleanField
-StudentCertificate
+**/users**
 
-student_id
-certificate_id
-Certificate
+* get (temporary, only for testing)
+* post
 
-name
-description
-Waitlist
+**/users/:id**
 
-first_name
-last_name
-email
-notes
-API
-Prefix: /api/v1
+* get
+* patch
+* delete
 
-/users
+**/users/:id/profile**
 
-get (temporary, only for testing)
-post
-/users/:id
+* get
 
-get
-patch
-delete
-/users/:id/profile
+*example response:*
 
-get
-example response:
-
+```json
 {
   "user": 6,
   "name": "Daneel Olivaw",
@@ -125,31 +131,40 @@ example response:
   "phone": null,
   "timezone": null
 }
-post
-/users/:id/certificates
+```
 
-get
-/users/:id/assignments
+* post
 
-get
-post
-/certificates
+**/users/:id/certificates**
 
-get
-/projects
+* get
 
-get
-Roadmap
-Version 2
-Students will be able to have public profiles with this information:
+**/users/:id/assignments**
 
-First Name
-Last Name
-Preferred Name
-GitHub Username
-Codepen Username
-Certificates/Badges
-Area where volunteers can view their own information and update their hours
+* get
+* post
 
-Create an hours available table for volunteers so they can denote exact hours
-Set type of lecture (add type field to Lecture model)
+**/certificates**
+
+* get
+
+**/projects**
+
+* get
+
+## Roadmap
+
+### Version 2
+
+* Students will be able to have public profiles with this information:
+  * First Name
+  * Last Name
+  * Preferred Name
+  * GitHub Username
+  * Codepen Username
+  * Certificates/Badges
+  
+* Area where volunteers can view their own information and update their hours
+  * Create an hours available table for volunteers so they can denote exact hours
+
+* Set type of lecture (add type field to Lecture model)
