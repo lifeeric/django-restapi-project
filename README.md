@@ -78,30 +78,6 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
 * patch
 * delete
 
-**/users/:id/profile**
-
-* get
-
-*example response:*
-
-```json
-{
-  "user": 6,
-  "name": "Daneel Olivaw",
-  "bio": "hello there...",
-  "preferred_name": null,
-  "avatar_url": "http://example.com",
-  "discord_name": null,
-  "github_username": "rdaneel",
-  "codepen_username": null,
-  "fcc_profile_url": null,
-  "current_level": 1,
-  "phone": null,
-  "timezone": null
-}
-```
-
-
 **/users**
 * get
 * post
@@ -114,8 +90,6 @@ $ GRANT ALL PRIVILEGES ON DATABASE freecodeschool TO fcs_admin;
 
 * get
 
-
-* get
 
 ## Roadmap
 
